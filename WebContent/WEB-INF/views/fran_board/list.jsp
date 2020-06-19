@@ -12,18 +12,22 @@
 <tr>
 	<th>번호</th>
 	<th>메뉴명</th>
-	<th>한줄평 수</th>
-	<th>평점</th>
+	<th>뭐야?</th>
 	<th>가격</th>
-	<th>등록 일자</th>
+	<th>등록일자</th>
+	<th>Blind 상태</th>
+	<th>승인 상태</th>
 </tr>
 </thead>
 <c:forEach items="${MenuList }" var="menu">
 <tr>
-	<td>${menu.Menuno}</td>
-	<td>${menu.Menuno}</td>
-	<td>${menu.Menuno}</td>
-	<td>${menu.Menuno}</td>
+	<td>${menu.menuNo}</td>
+	<td>${menu.menuName}</td>
+	<td>${menu.menuInfo}</td>
+	<td>${menu.menuCost}</td>
+	<td>${menu.menuDate}</td>
+	<td>${menu.menuBlind}</td>
+	<td>${menu.menuStat}</td>
 </tr>
 </c:forEach>
 
@@ -31,6 +35,7 @@
 </table>
 </div>
 
+<c:import url="/WEB-INF/views/fran_layout/paging.jsp" />
 
 
 <c:import url="/WEB-INF/views/fran_layout/footer.jsp" />

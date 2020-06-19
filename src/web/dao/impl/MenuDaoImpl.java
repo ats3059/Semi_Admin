@@ -26,7 +26,7 @@ public class MenuDaoImpl implements MenuDao{
 
 		String sql = "";
 		sql += "SELECT count(*) FROM menu";
-		sql += " WHERE FRAN_NO = ?";
+		sql += " WHERE FRAN_NO = 1";
 		
 		//결과저장할 변수
 		int totalCount = 0;
@@ -58,7 +58,7 @@ public class MenuDaoImpl implements MenuDao{
 		
 		String sql = "";
 		sql += "SELECT * FROM menu";
-//		여기 추가해야댐
+
 		
 		List<Menu> MenuList = new ArrayList<>();
 		
@@ -78,13 +78,9 @@ public class MenuDaoImpl implements MenuDao{
 				menu.setMenuInfo(rs.getString("MENU_INFO"));
 				menu.setMenuCost(rs.getInt("MENU_COST"));
 				menu.setMenuDate(rs.getDate("MENU_DATE"));
-				
-				
+				menu.setMenuStat(rs.getString("MENU_STAT"));
+				menu.setMenuBlind(rs.getString("MENU_BLIND"));
 				menu.setFranNo(rs.getInt("FRAN_NO"));
-				
-				
-				
-				
 				
 				MenuList.add(menu);
 			}
