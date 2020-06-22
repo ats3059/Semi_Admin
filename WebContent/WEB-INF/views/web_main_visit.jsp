@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+       <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 	<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.TreeMap"%>
@@ -9,15 +9,7 @@
 <%List<Date>graphKey =(List)request.getAttribute("graphKey"); %> 
 <%List<Integer>graphVal =(List)request.getAttribute("graphVal"); %> 
 
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
+<c:import url="/WEB-INF/views/web_layout/header2.jsp" />
 
 <script> 
 var key=[];
@@ -39,12 +31,17 @@ var val=[];
 	            element: 'morrisChart',
 	              data: [
 	                      { period: key[0] , value: val[0] },
-	                      { period:	key[1] , value: 20 },
-	                      { period: key[2] , value: 20 },
-	                      { period: key[3] , value: 20 },
-	                      { period: key[4] , value: 20 },
-	                      { period: key[5] , value: 20 },
-	                     
+	                      { period: key[1] , value: val[1] },
+	                      { period: key[2] , value: val[2] },
+	                      { period: key[3] , value: val[3] },
+	                      { period: key[4] , value: val[4] },
+	                      { period: key[5] , value: val[5] },
+	                      { period: key[6] , value: val[6] },
+	                      { period: key[7] , value: val[7] },
+	                      { period: key[8] , value: val[8] },
+	                      { period: key[9] , value: val[9] },
+	                      { period: key[10] , value: val[10] },
+	                      { period: key[11] , value: val[11] }
 	                      
 	                      
 	                  ],
@@ -66,8 +63,10 @@ var val=[];
 
 </head>
 <body>
+<c:import url="/WEB-INF/views/web_layout/body_nav.jsp" />
       <div id="morrisChart" ></div>        
   	<div id ="div1"></div>
+  	<c:import url="/WEB-INF/views/web_layout/footer.jsp" />
 
 </body>
 </html>
