@@ -10,22 +10,44 @@ public class User {
 	private String userName;
 	private String userNick;
 	private Date userBirth;
-	private String userGender;
+	private char userGender;
 	private String userEmail;
 	private int	userTel;
 	private Date userDate;
 	private int	userCnt;
 	private int	userAuth;
 	private int	userGrade;
-	private String userReport;
+	private char userReport;
 	private int	franNo;
-	
+	private int count;
+	private int startcnt;
+	private int reviewcnt;
+
+	public int getStartcnt() {
+		return startcnt;
+	}
+	public void setStartcnt(int startcnt) {
+		this.startcnt = startcnt;
+	}
+	public int getReviewcnt() {
+		return reviewcnt;
+	}
+	public void setReviewcnt(int reviewcnt) {
+		this.reviewcnt = reviewcnt;
+	}
 	@Override
 	public String toString() {
 		return "User [userNo=" + userNo + ", userId=" + userId + ", userPw=" + userPw + ", userName=" + userName
 				+ ", userNick=" + userNick + ", userBirth=" + userBirth + ", userGender=" + userGender + ", userEmail="
 				+ userEmail + ", userTel=" + userTel + ", userDate=" + userDate + ", userCnt=" + userCnt + ", userAuth="
-				+ userAuth + ", userGrade=" + userGrade + ", userReport=" + userReport + ", franNo=" + franNo + "]";
+				+ userAuth + ", userGrade=" + userGrade + ", userReport=" + userReport + ", franNo=" + franNo
+				+ ", count=" + count + ", startcnt=" + startcnt + ", reviewcnt=" + reviewcnt + "]";
+	}
+	public int getCount() {
+		return count;
+	}
+	public void setCount(int count) {
+		this.count = count;
 	}
 	public int getUserNo() {
 		return userNo;
@@ -63,10 +85,10 @@ public class User {
 	public void setUserBirth(Date userBirth) {
 		this.userBirth = userBirth;
 	}
-	public String getUserGender() {
+	public char getUserGender() {
 		return userGender;
 	}
-	public void setUserGender(String userGender) {
+	public void setUserGender(char userGender) {
 		this.userGender = userGender;
 	}
 	public String getUserEmail() {
@@ -105,10 +127,10 @@ public class User {
 	public void setUserGrade(int userGrade) {
 		this.userGrade = userGrade;
 	}
-	public String getUserReport() {
+	public char getUserReport() {
 		return userReport;
 	}
-	public void setUserReport(String userReport) {
+	public void setUserReport(char userReport) {
 		this.userReport = userReport;
 	}
 	public int getFranNo() {

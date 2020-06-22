@@ -8,7 +8,7 @@ public class Blind {
 	private String blindRsn;
 	private Date blindDate;
 	private Date blindStart;
-	private String blindYn;
+	private char blindYn;
 	private String blindNote;
 	private int menuNo;
 	@Override
@@ -40,10 +40,10 @@ public class Blind {
 	public void setBlindStart(Date blindStart) {
 		this.blindStart = blindStart;
 	}
-	public String getBlindYn() {
+	public char getBlindYn() {
 		return blindYn;
 	}
-	public void setBlindYn(String blindYn) {
+	public void setBlindYn(char blindYn) {
 		this.blindYn = blindYn;
 	}
 	public String getBlindNote() {

@@ -15,12 +15,12 @@
 
     <div class="container">
 
-      <form class="form-signin">
+      <form class="form-signin" method="post">
       	<img src = "/m/resources/image/brand.gif">
         <label for="inputEmail" class="sr-only">아이디 입력</label>
-        <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+        <input type="text" name = "adminid" class="form-control" placeholder="ID 입력해주세요" required autofocus>
         <label for="inputPassword" class="sr-only">비밀번호 입력</label>
-        <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+        <input type="password" name = "adminpw" class="form-control" placeholder="Pw 입력해주세요" required>
         <div class="checkbox">
         </div>
         <button class="btn btn-lg btn-primary btn-block" type="submit">로그인</button>

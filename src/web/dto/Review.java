@@ -9,7 +9,7 @@ public class Review {
 	private Date reviewDate;
 	private int	reviewGood;
 	private int	reviewBad;
-	private String reviewReport;
+	private char reviewReport;
 	private int	userNo;
 	private int	menuNo;
 	@Override
@@ -48,10 +48,10 @@ public class Review {
 	public void setReviewBad(int reviewBad) {
 		this.reviewBad = reviewBad;
 	}
-	public String getReviewReport() {
+	public char getReviewReport() {
 		return reviewReport;
 	}
-	public void setReviewReport(String reviewReport) {
+	public void setReviewReport(char reviewReport) {
 		this.reviewReport = reviewReport;
 	}
 	public int getUserNo() {

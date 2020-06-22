@@ -3,14 +3,9 @@
 	<div class="navwrap">
 <nav class="navbar navbar-default">
 <ul class="nav">
-	<li><a href="#">Home</a> </li>
+	<li><a href="#">회원관리</a> </li>
 	<li>
-		<a href="#">회원등급</a>
-		<ul>
-			<li><a href="#">회원등급</a> </li>
-			<li><a href="#">방문현황</a> </li>
-			<li><a href="#">CS처리</a> </li>
-		</ul>
+		<a href="#">방문현황</a>
 	</li>	
 	
 	<li>
