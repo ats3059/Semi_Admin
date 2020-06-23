@@ -51,16 +51,16 @@
 	<td>
 		<c:choose>
 			<c:when test="${list.userGrade eq 1 }">
-				<%="등급1" %>
+				<%="일반회원" %>
 			</c:when>
 			<c:when test="${list.userGrade eq 2 }">
-				<%="등급2" %>
+				<%="우수회원" %>
 			</c:when>
 			<c:when test="${list.userGrade eq 3 }">
-				<%="등급3" %>
+				<%="VIP" %>
 			</c:when>
 			<c:otherwise>
-				<%="등급4" %>
+				<%="VVIP" %>
 			</c:otherwise>
 		</c:choose>
 	</td>

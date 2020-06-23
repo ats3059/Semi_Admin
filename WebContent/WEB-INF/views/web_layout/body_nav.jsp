@@ -3,9 +3,9 @@
 	<div class="navwrap">
 <nav class="navbar navbar-default">
 <ul class="nav">
-	<li><a href="#">회원관리</a> </li>
+	<li><a href="/m/web/main">회원관리</a> </li>
 	<li>
-		<a href="#">방문현황</a>
+		<a href="/m/web/visit">회원가입 현황</a>
 	</li>	
 	
 	<li>

@@ -6,7 +6,7 @@
 
 
 <c:import url="/WEB-INF/views/web_layout/body_nav.jsp" />
-<c:import url="/WEB-INF/views/web_layout/body.jsp" />
+<c:import url="/WEB-INF/views/fran_management/body.jsp" />
 
 
 <c:import url="/WEB-INF/views/web_layout/footer.jsp" />
