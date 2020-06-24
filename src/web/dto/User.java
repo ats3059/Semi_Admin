@@ -22,7 +22,14 @@ public class User {
 	private int count;
 	private int startcnt;
 	private int reviewcnt;
+	private String targetId;
 
+	public String getTargetId() {
+		return targetId;
+	}
+	public void setTargetId(String targetId) {
+		this.targetId = targetId;
+	}
 	public int getStartcnt() {
 		return startcnt;
 	}
@@ -35,13 +42,16 @@ public class User {
 	public void setReviewcnt(int reviewcnt) {
 		this.reviewcnt = reviewcnt;
 	}
+
+	
 	@Override
 	public String toString() {
 		return "User [userNo=" + userNo + ", userId=" + userId + ", userPw=" + userPw + ", userName=" + userName
 				+ ", userNick=" + userNick + ", userBirth=" + userBirth + ", userGender=" + userGender + ", userEmail="
 				+ userEmail + ", userTel=" + userTel + ", userDate=" + userDate + ", userCnt=" + userCnt + ", userAuth="
 				+ userAuth + ", userGrade=" + userGrade + ", userReport=" + userReport + ", franNo=" + franNo
-				+ ", count=" + count + ", startcnt=" + startcnt + ", reviewcnt=" + reviewcnt + "]";
+				+ ", count=" + count + ", startcnt=" + startcnt + ", reviewcnt=" + reviewcnt + ", targetId=" + targetId
+				+ "]";
 	}
 	public int getCount() {
 		return count;

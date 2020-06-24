@@ -18,7 +18,7 @@
 	</ul>
 	</li>
 	<li>
-		<a href="#">게시물관리</a>
+		<a href="/m/report/list">게시물관리</a>
 	<ul>
 		<li><a href="#">답변 Q&A 목록</a></li>
 		<li><a href="#">답변하기</a></li>
