@@ -68,6 +68,7 @@
 		</c:forEach>
 	</table>
 </div>
+<button onclick="location.href='/m/view/fran'">fran으로</button>
 
 <c:import url="/WEB-INF/views/report/paging_report.jsp" />
 <c:import url="/WEB-INF/views/web_layout/footer.jsp" />

@@ -34,24 +34,49 @@
 	
 	
 	<tr><th width="20%">내용</th><td width="60%"><c:out value="${reportvalue[status.index].rptDetail}" /></td></tr>
-		</c:forEach>
+		
 
 		<tr><td></td></tr>
 
 <tr><th>조치</th>
 <th>답변</th></tr>
-<tr>
-<td><select name="rptManage">
-	<option value="1">계정 1일 정지</option>
-	<option value="2">계정 3일 정지</option>
-	<option value="3">계정 7일 정지</option>
-	<option value="4">계정 30일 정지</option>
-</select></td>
-<td><textarea name="rptNote" cols="100" rows="5"></textarea></td>
-</tr>
+<c:if test="${reportvalue[status.index].rptYn == 'N' }">
+	<tr>
+		<td><select name="rptManage">
+			<option value="1">계정 1일 정지</option>
+			<option value="2">계정 3일 정지</option>
+			<option value="3">계정 7일 정지</option>
+			<option value="4">계정 30일 정지</option>
+		</select></td>
+		<td><textarea name="rptNote" cols="100" rows="5"></textarea></td>
+	</tr>
+</c:if>
+
+<c:if test="${reportvalue[status.index].rptYn == 'Y' }">
+	<tr>
+		<td>
+		<c:choose>
+         <c:when test="${reportvalue[status.index].rptManage eq 1 }">
+            <%="계정 1일 정지" %>
+         </c:when>
+         <c:when test="${reportvalue[status.index].rptManage eq 2 }">
+            <%="계정 3일 정지" %>
+         </c:when>
+         <c:when test="${reportvalue[status.index].rptManage eq 3 }">
+            <%="계정 7일 정지" %>
+         </c:when>
+         <c:otherwise>
+            <%="계정 30일 정지" %>
+         </c:otherwise>
+     	</c:choose>
+		</td>
+		<td><textarea name="rptNote" cols="100" rows="5" disabled="disabled"><c:out value="${reportvalue[status.index].rptNote}"></c:out></textarea></td>
+	</tr>
+</c:if>
+</c:forEach>
 </table>
-	<input type="submit" style="margin-left: 1100px;" class="btn btn-primary btn-lg" value="처리" />
-	<button class="btn btn-primary btn-lg" onclick="javascript:history.go(-1)">취소</button>
+	<input type="submit" style="margin-left: 1000px;" class="btn btn-primary btn-lg" value="처리" />
+	<button type="button" class="btn btn-primary btn-lg" onclick="javascript:history.go(-1)">취소</button>
 </form>
 </div>
 <c:import url="/WEB-INF/views/web_layout/footer.jsp" />
