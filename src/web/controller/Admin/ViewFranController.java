@@ -1,8 +1,6 @@
 package web.controller.Admin;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 
 import javax.servlet.ServletException;
@@ -12,12 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import web.dto.Fran;
-import web.dto.Report;
-import web.dto.User;
 import web.service.face.FranMenuService;
-import web.service.face.ReportService;
 import web.service.impl.FranMenuServiceImpl;
-import web.service.impl.ReportServiceImpl;
 import web.util.Paging;
 
 @WebServlet("/view/fran")

@@ -4,15 +4,17 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 
 import web.dao.face.FranDao;
 import web.dbutil.JDBCTemplate;
+import web.dto.Blind;
 import web.dto.Fran;
+import web.dto.Image;
 import web.dto.Menu;
-import web.dto.Report;
-import web.dto.User;
 import web.util.Paging;
 
 public class FranDaoImpl implements FranDao{
@@ -24,7 +26,7 @@ public class FranDaoImpl implements FranDao{
 		
 		conn = JDBCTemplate.getConnection();
 		
-		String sql = "select f.fran_no,f.fran_name,m.menu_name from fran f , menu m where m.fran_no = f.fran_no\r\n" + 
+		String sql = "select f.fran_no,f.fran_name,m.menu_name,m.menu_no from fran f , menu m where m.fran_no = f.fran_no\r\n" + 
 				"and menu_stat = 'N'";
 		Map<Fran,Menu> map = new LinkedHashMap<Fran, Menu>();
 		
@@ -38,7 +40,7 @@ public class FranDaoImpl implements FranDao{
 				fran.setFranNo(rs.getInt("fran_no"));
 				fran.setFranName(rs.getString("fran_name"));
 				menu.setMenuName(rs.getString("menu_name"));
-				
+				menu.setMenuNo(rs.getInt("menu_no"));
 				map.put(fran,menu);
 				
 			}
@@ -46,31 +48,148 @@ public class FranDaoImpl implements FranDao{
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}finally {
+			
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(ps);
+			
+		}
+		System.out.println("기준이되는 DAO에서 보내는 메세지 입니다 : "+map);
+		return map;
 		}
 		
 		
-		return map;
-	}
+	
 	@Override
 	public Map<Fran, Menu> SelectFranMember(Fran fran) {
 
 		conn = JDBCTemplate.getConnection();
 		
-		String sql = "select f.fran_no,f.fran_name,m.menu_name from fran f , menu m where m.fran_no = f.fran_no\r\n" + 
-				"and menu_stat = 'N'";
+		String sql = "select f.fran_no," + 
+				"          f.fran_name," + 
+				"          m.menu_name," + 
+				"           m.menu_date," + 
+				" m.menu_info,m.menu_cost" + 
+				" from fran f , menu m" + 
+				" where m.fran_no = f.fran_no" + 
+				"    and menu_stat = 'N'" + 
+				"    and f.fran_no = ?";
+		
+		
+		Map<Fran,Menu> map = new LinkedHashMap<Fran, Menu>();
+		
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, fran.getFranNo());
+			rs = ps.executeQuery();
+			while(rs.next()) {	
+				Fran fra = new Fran();
+				Menu menu = new Menu();
+				
+				fra.setFranName(rs.getString("fran_name"));
+				menu.setMenuName(rs.getString("menu_name"));
+				menu.setMenuDate(rs.getDate("menu_date"));
+				menu.setMenuInfo(rs.getString("menu_info"));
+				menu.setMenuCost(rs.getInt("menu_cost"));
+				map.put(fra, menu);
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(ps);
+		}
+		
+		
+		return map;
+	}
+	
+	@Override
+	public List<Image> SelectImage(Menu menu) {
+	conn = JDBCTemplate.getConnection();
+		
+		String sql = " select i.img_name,i.img_server,i.img_ext from image i , menu m  where m.menu_no = i.menu_no" + 
+				" and m.menu_no = ? and menu_stat = 'N'";
+		
+		List<Image> list = new ArrayList<Image>();
+		
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, menu.getMenuNo());
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {	
+			Image image = new Image();
+			image.setImgName(rs.getString("img_name"));
+			image.setImgServer(rs.getString("img_server"));
+				
+				
+			list.add(image);
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(ps);
+		}
+		
+		System.out.println("여기는 Dao" + list);
+		return list;
+	}
+
+
+
+	@Override
+	public void MenuUpdate(Menu menu) {
+		conn = JDBCTemplate.getConnection();
+		
+		String sql = "update menu set menu_stat = 'Y' where menu_no = ? ";
+		System.out.println("여기는 업데이트 DAO : " + menu.getMenuNo());
+	
+		try {
+			
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1 , menu.getMenuNo());	
+			ps.executeUpdate();
+			
+			System.out.println(ps);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(ps);
+		
+		}
+		
+		
+	}
+
+
+
+	@Override
+	public Map<Fran, Menu> SelectFranBlind() {
+conn = JDBCTemplate.getConnection();
+		
+		String sql = "select f.fran_no,f.fran_name,m.menu_name,m.menu_no from fran f, menu m, blind b";
+			sql +=	" 	where f.fran_no = m.fran_no and m.menu_no = b.menu_no and b.blind_yn = 'N'";
 		Map<Fran,Menu> map = new LinkedHashMap<Fran, Menu>();
 		
 		try {
 			ps = conn.prepareStatement(sql);
 			rs = ps.executeQuery();
 			while(rs.next()) {	
-				Fran fra = new Fran();
+				Fran fran = new Fran();
 				Menu menu = new Menu();
 				
 				fran.setFranNo(rs.getInt("fran_no"));
 				fran.setFranName(rs.getString("fran_name"));
 				menu.setMenuName(rs.getString("menu_name"));
-				
+				menu.setMenuNo(rs.getInt("menu_no"));
 				map.put(fran,menu);
 				
 			}
@@ -78,11 +197,148 @@ public class FranDaoImpl implements FranDao{
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}finally {
+			
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(ps);
+			
+		}
+		System.out.println("기준이되는 Blind DAO에서 보내는 메세지 입니다 : "+map);
+		return map;
+	}
+
+
+//	모달내부의 메뉴와 블라인드 내용을 뽑아줄 메소드
+	@Override
+	public Map<Menu, Blind> SelectMenuAndBlind(Menu menu) {
+		conn = JDBCTemplate.getConnection();
+		String sql = "select m.menu_no,m.menu_name, b.blind_rsn, b.blind_date,b.blind_start,b.blind_note" + 
+				" from menu m , blind b where m.menu_no = b.menu_no and m.menu_no = ?";
+		Map<Menu,Blind> map = new LinkedHashMap<Menu, Blind>();
+		
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, menu.getMenuNo());
+			rs = ps.executeQuery();
+			
+			
+			while(rs.next() ) {
+				Menu menu1 = new Menu();
+				Blind blind = new Blind();
+				
+				menu1.setMenuNo(rs.getInt("menu_no"));
+				menu1.setMenuName(rs.getString("menu_name"));
+				blind.setBlindRsn(rs.getString("blind_rsn"));
+				blind.setBlindDate(rs.getDate("blind_date"));
+				blind.setBlindStart(rs.getDate("blind_start"));
+				blind.setBlindNote(rs.getString("blind_note"));
+				
+				map.put(menu1, blind);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(ps);
 		}
 		
 		
 		return map;
 	}
+
+
+//	모달내부의 이미지를 출력해줄 메소드
+	@Override
+	public List<Image> SelectBlindImage(Menu menu) {
+conn = JDBCTemplate.getConnection();
+		
+		String sql = " select i.img_name,i.img_server,i.img_ext from image i , menu m  where m.menu_no = i.menu_no" + 
+				" and m.menu_no = ? and menu_blind = 'N'";
+		
+		List<Image> list = new ArrayList<Image>();
+		
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, menu.getMenuNo());
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {	
+			Image image = new Image();
+			image.setImgName(rs.getString("img_name"));
+			image.setImgServer(rs.getString("img_server"));
+				
+				
+			list.add(image);
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(ps);
+		}
+		
+		System.out.println("여기는 블라인드 DAO : " + list);
+		return list;
+	}
+
+
+//블라인드를 업데이트해주는 메소드
+	@Override
+	public void BlindUpdate(Menu menu) {
+		conn = JDBCTemplate.getConnection();
+		
+		String sql = "update menu set menu_blind = 'Y' where menu_no = ? ";
+		System.out.println("여기는 업데이트 DAO : " + menu.getMenuNo());
+	
+		try {
+			
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1 , menu.getMenuNo());	
+			ps.executeUpdate();
+			
+			System.out.println(ps);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(ps);
+		
+		}
+		
+		
+	}
+
+
+
+@Override
+public void BlindUpdateB(Blind blind) {
+	conn = JDBCTemplate.getConnection();
+	
+	String sql = "update blind set blind_yn = 'Y' where menu_no = ? ";
+	System.out.println("여기는 블라인드 업데이트  매개변수는 blind DAO : " + blind.getMenuNo());
+	
+	try {
+		
+		ps = conn.prepareStatement(sql);
+		ps.setInt(1 , blind.getMenuNo());	
+		ps.executeUpdate();
+		
+		System.out.println(ps);
+	} catch (SQLException e) {
+		e.printStackTrace();
+	}finally {
+		
+		JDBCTemplate.close(rs);
+		JDBCTemplate.close(ps);
+	
+	}
+	
+	
+}
 	//--------------------------------------------------------------------
 
 	@Override
@@ -171,5 +427,6 @@ public class FranDaoImpl implements FranDao{
 		return franList;
 	}
 
-	
+
+
 }

@@ -8,7 +8,7 @@ $(document).ready(function() {
 	
 			$.ajax({
 				type: "POST"
-				, url: "<%=request.getContextPath() %>/web/franman/search"
+				, url: "<%=request.getContextPath() %>/web/blind/search"
 				, data: {
 					franno: $(this).next("input[class='modalvalue1']").val(),
 					menuno: $(this).nextAll("input[class='modalvalue2']").val()
@@ -37,14 +37,14 @@ $(document).ready(function() {
 	
 	
 <section class="wrapper">
-	<h2 class="onlyh2">신규등록 대기목록</h2>
+	<h2 class="onlyh2">블라인드 대기목록</h2>
 	<div class="tbcontainer">
 		<table class="table table-bordered">
 			<tr>
-				<th style="width: 20%;">프렌차이즈 번호</th>
-				<th style="width: 20%;">프렌차이즈 이름</th>
-				<th style="width: 20%;">신규메뉴</th>
-				<th style="width: 20%;">자세히보기</th>
+				<th style="width: 25%;">프렌차이즈 번호</th>
+				<th style="width: 25%;">프렌차이즈 이름</th>
+				<th style="width: 25%;">메뉴이름</th>
+				<th style="width: 25%;">자세히보기</th>
 			</tr>
 			<c:forEach var="list1" items="${frankey }" varStatus="status">
 			<tr>
@@ -74,12 +74,6 @@ $(document).ready(function() {
 					
 					<div class="modal-body">
 				
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-						<button type="button" class="btn btn-primary">Save
-							changes</button>
-					</div>
 				</div>
 			</div>
 		</div>

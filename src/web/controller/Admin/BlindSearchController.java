@@ -11,57 +11,59 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import web.dto.Blind;
 import web.dto.Fran;
 import web.dto.Image;
 import web.dto.Menu;
 import web.service.face.FranMenuService;
 import web.service.impl.FranMenuServiceImpl;
 
-@WebServlet("/web/franman/search")
-public class Web_franManagementSearchController extends HttpServlet {
+@WebServlet("/web/blind/search")
+public class BlindSearchController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    private FranMenuService franmenuService = new FranMenuServiceImpl();
+	private FranMenuService franmenuService = new FranMenuServiceImpl();
+   
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
+		
 		
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("프렌차이즈 넘버 :  " + request.getParameter("franno"));
 		System.out.println("메뉴 넘버  : " + request.getParameter("menuno"));
+		Map<Menu,Blind> map = franmenuService.BlindInfoSelect(request);
 		
-		request.setAttribute("menuno", request.getParameter("menuno"));
+		List<Menu>menukey = new ArrayList<>();
 		
-		List<Image> list = franmenuService.FramnImageSelect(request);
+		List<Blind>blindval = new ArrayList<>();
 		
-		
-		
-		
-		
-		
-		Map<Fran,Menu> map = franmenuService.FranMemberSelect(request);
-		
-		
-		List<Fran>franKey = new ArrayList<>();
-		List<Menu>menuval = new ArrayList<>();
-		for(Fran key:map.keySet()) {
-			franKey.add(key);
-			menuval.add(map.get(key));
+		for(Menu key:map.keySet()) {
+			menukey.add(key);
+			blindval.add(map.get(key));
 		}
-		//멤버 조회하기
-		request.setAttribute("frkey", franKey);	
-		request.setAttribute("muval", menuval);	
-		request.setAttribute("imglist", list);	
+		//블라인드 모달값 출력을 위한....?값??
+		request.setAttribute("mukey", menukey);	
+		request.setAttribute("blval", blindval);	
+	
+		
+		
+		//블라인드 이미지 출력....
+		List<Image> list = franmenuService.BlindImageSelect(request);
+		request.setAttribute("bimglist", list);	
 		// 파일경로 보내주기
 		
 		System.out.println(map);
 		System.out.println(list);
 		
+		request.setAttribute("menuno", request.getParameter("menuno"));
 		
 		
 		
-		request.getRequestDispatcher("/WEB-INF/views/web_fran_management_search.jsp").forward(request, response);
 		
+		request.getRequestDispatcher("/WEB-INF/views/web_blind_search.jsp").forward(request, response);
+	
+	
 	}
 
 }
