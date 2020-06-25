@@ -48,7 +48,10 @@
 
 	/* 기본여백 제거하기 */
 	padding: 0;
-	margin: 0;
+	margin: auto;
+	
+	width:1200px;
+	margin-left: 60px;
 }
 
 /* 메인메뉴 메뉴항목  */
@@ -87,10 +90,10 @@
 	font-family: "돋움", dotum, sans-serif;
 	
 	/* 내부 여백 (링크가 클릭되는 영역)*/
-	padding: 10px 15ps;
+	padding: 5px 15ps;
 	
 	/* 외부 여백 (링크 클릭 안되는 영역, 다른 <a>와 구분되도록 만든다) */
-	margin: 0 10px;
+	margin: 0 5px;
 	
 }
 /* <a>태그 영역에 마우스를 올렸을 때 */
@@ -186,9 +189,10 @@
 .navwrap{
 	text-align: center;
 }
-.nav{
+.nav1{
 	 margin: auto;
     width: 1000px;
+    
 }
 
 .gradetb{
@@ -270,3 +274,26 @@ th{
 	width:50px;
 	height:50px;
 }
+.modaldiv{
+	width:100%;
+	height:600px;
+	text-align: center;
+}
+p>img{
+	width: 300px;
+	height:300px;
+}
+.modal-content{
+	width:600px;
+	height:800px;
+}
+.admin_modal {
+	text-align: left;	
+	margin: 0 auto;
+	word-break: break-all;
+}
+.admin_modal_title {
+	width:200px;
+	font-weight: bolder;
+}
+

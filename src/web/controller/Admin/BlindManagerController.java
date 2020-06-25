@@ -10,6 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import web.dto.Fran;
 import web.dto.Menu;
@@ -37,8 +38,21 @@ public class BlindManagerController extends HttpServlet {
 		request.setAttribute("frankey", franKey);	
 		request.setAttribute("menuval", menuval);	
 		
-		request.getRequestDispatcher("/WEB-INF/views/web_blind_management.jsp").forward(request, response);
+		HttpSession session = request.getSession();
+		
+		
+		if(session.getAttribute("login") == null) {
+			
+			response.sendRedirect("/m/web");
+	
+		}else if ((boolean)session.getAttribute("login") == true) {
+			request.getRequestDispatcher("/WEB-INF/views/web_blind_management.jsp").forward(request, response);
+		}
+
 	}
+		
+	
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
 	

@@ -11,6 +11,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import web.dto.Fran;
 import web.dto.Menu;
@@ -35,12 +36,22 @@ public class Web_franManagementController extends HttpServlet {
 		//멤버 조회하기
 		request.setAttribute("frankey", franKey);	
 		request.setAttribute("menuval", menuval);	
+		HttpSession session = request.getSession();
 		
 		
-		
-		request.getRequestDispatcher("/WEB-INF/views/web_fran_management.jsp").forward(request, response);
+		if(session.getAttribute("login") == null) {
+			
+			response.sendRedirect("/m/web");
 	
+		}else if ((boolean)session.getAttribute("login") == true) {
+			request.getRequestDispatcher("/WEB-INF/views/web_fran_management.jsp").forward(request, response);
+		}
+
 	}
+		
+		
+	
+
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	

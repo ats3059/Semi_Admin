@@ -7,31 +7,17 @@
 	<li>
 		<a href="/m/web/visit">회원가입 현황</a>
 	</li>	
-	
 	<li>
-		<a href="#">프렌차이즈관리</a>
-	<ul>
-		<li><a href="#">회사별메뉴 관리</a></li>
-		<li><a href="#">신규/blind목록</a></li>
-		<li><a href="#">신규등록자세히보기</a></li>
-		<li><a href="#">blind 자세히보기</a></li>
-	</ul>
+		<a href="/m/web/franman">신메뉴 등록대기</a>
+	</li>
+	<li>
+		<a href="/m/web/main/blind">신규 블라인드 등록 대기</a>
 	</li>
 	<li>
 		<a href="/m/report/list">게시물관리</a>
-	<ul>
-		<li><a href="#">답변 Q&A 목록</a></li>
-		<li><a href="#">답변하기</a></li>
-		<li><a href="#">신고 목록</a></li>
-		<li><a href="#">신고 조치</a></li>
-	</ul>
 	</li>
 	<li>
-		<a href="#">프렌차이즈 계정관리</a>
-	<ul>
-		<li><a href="#">가입현황</a></li>
-		<li><a href="#">Q&A</a></li>
-	</ul>
+		<a href="/m/view/fran">프렌차이즈 계정조회</a>
 	</li>
 </ul>
 </nav>
