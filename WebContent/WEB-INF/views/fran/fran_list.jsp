@@ -4,14 +4,24 @@
 
 <c:import url="/WEB-INF/views/web_layout/header2.jsp" />
 <c:import url="/WEB-INF/views/web_layout/body_nav.jsp" />
+
+<script type="text/javascript">
+$(document).ready(function() {
+	//검색 버틀 클릭
+	$("#btnSearch").click(function() {
+		location.href="/m/view/fran?search="+$("#search").val();
+	});
+	
+});
+</script>
     
     	<div class="nav4">
 		<div class="row">
 			<div class="col-lg-6">
 				<div class="input-group">
-					<input type="text" class="form-control" placeholder="Search for...">
+					<input id="search" type="text" class="form-control" placeholder="Search for...">
 					<span class="input-group-btn">
-						<button class="btn btn-default" type="button">
+						<button  id="btnSearch" class="btn btn-default" type="button">
 							<span class="glyphicon glyphicon-search"></span>
 						</button>
 					</span>

@@ -105,7 +105,7 @@ private FranDao franDao = new FranDaoImpl();
 		//검색어
 		String search = (String)req.getParameter("search");
 		//Board 테이블의 총 게시글 수를 조회한다
-		int totalCount = franDao.selectCntFran();
+		int totalCount = franDao.selectCntFran(search);
 
 		//Paging 객체 생성 - 현재 페이지(curPage), 총 게시글 수(totalCount) 활용
 		Paging paging = new Paging(totalCount, curPage);

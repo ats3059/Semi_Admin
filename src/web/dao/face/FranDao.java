@@ -30,6 +30,6 @@ public interface FranDao {
 		
 	//--------------------------------------------------------------------
 
-	public int selectCntFran();
+	public int selectCntFran(String search);
 	public Map<Fran, String> selectFran(Paging paging);
 }

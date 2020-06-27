@@ -342,18 +342,20 @@ public void BlindUpdateB(Blind blind) {
 	//--------------------------------------------------------------------
 
 	@Override
-	public int selectCntFran() {
+	public int selectCntFran(String search) {
 		conn = JDBCTemplate.getConnection(); //DB연결
 		
 		//SQL 작성
 		String sql = "";
-		sql += "SELECT count(*) FROM fran";
+		sql += "SELECT count(*) FROM fran WHERE fran_name LIKE '%'||?||'%'";
 		
 		//최종 결과값
 		int cnt = 0;
 		
 		try {
 			ps = conn.prepareStatement(sql); //SQL수행 객체
+			
+			ps.setString(1, search);
 			
 			rs = ps.executeQuery(); //SQL수행 및 결과집합 반환
 			

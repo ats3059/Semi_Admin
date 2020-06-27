@@ -23,8 +23,6 @@ public class ViewFranController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-		
-		
 		//요청파라미터를 전달하여 Paging 객체 생성하기
 		Paging paging = franMenuService.getPagingReport(req);
 		

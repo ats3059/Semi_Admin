@@ -14,7 +14,7 @@
 		<a href="/m/web/main/blind">신규 블라인드 등록 대기</a>
 	</li>
 	<li>
-		<a href="/m/report/list">게시물관리</a>
+		<a href="/m/report/list">신고관리</a>
 	</li>
 	<li>
 		<a href="/m/view/fran">프렌차이즈 계정조회</a>
