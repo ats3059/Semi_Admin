@@ -5,7 +5,7 @@
 <c:import url="/WEB-INF/views/web_layout/body_nav.jsp" />
 
 <div class="tbcontainer">
-	<table class="table table-bordered">
+	<table class="table table-bordered" style="text-align: center">
 	<tr>
 		<th style="width: 10%;">신고번호</th>
 		<th style="width: 10%;">신고자</th>

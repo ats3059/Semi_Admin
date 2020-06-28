@@ -17,6 +17,12 @@
 		<a href="/m/report/list">신고관리</a>
 	</li>
 	<li>
+		<a href="/m/view/notice">공지</a>
+	</li>
+	<li>
+		<a href="/m/view/posts">Q&A</a>
+	</li>
+	<li>
 		<a href="/m/view/fran">프렌차이즈 계정조회</a>
 	</li>
 </ul>
