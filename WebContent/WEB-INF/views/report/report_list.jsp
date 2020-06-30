@@ -29,13 +29,13 @@
 				<td width="10%"><a href="/m/report/measure?rptNo=${reportvalue[status.index].rptNo}">
 				<c:choose>
 			         <c:when test="${reportvalue[status.index].rptRsn eq 1 }">
-			            <%="욕설" %>
+			            <%="비속어 사용" %>
 			         </c:when>
 			         <c:when test="${reportvalue[status.index].rptRsn eq 2 }">
-			            <%="비방" %>
+			            <%="허위사실 유포" %>
 			         </c:when>
 			         <c:when test="${reportvalue[status.index].rptRsn eq 3 }">
-			            <%="거짓" %>
+			            <%="불충분한 정보" %>
 			         </c:when>
 			         <c:otherwise>
 			            <%="기타" %>
