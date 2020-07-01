@@ -49,7 +49,7 @@
 			<option value="3">계정 7일 정지</option>
 			<option value="4">계정 30일 정지</option>
 		</select></td>
-		<td><textarea name="rptNote" cols="100" rows="5"></textarea></td>
+		<td><textarea name="rptNote" cols="80" rows="5"></textarea></td>
 	</tr>
 
 </c:forEach>

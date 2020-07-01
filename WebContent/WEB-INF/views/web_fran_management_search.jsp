@@ -25,7 +25,7 @@
   	</tr>
   	</table>
   	
-  	<p>이미지 <img src = "/upload/${imglist.get(0).imgServer }"></p>
+  	<p><img src = "/upload/${imglist.get(0).imgServer }"></p>
     
   
   <button type="button" class= "btn btn-success" onclick="location.href='/m/web/main/fran/update?menuno=${menuno }' ">승인</button>

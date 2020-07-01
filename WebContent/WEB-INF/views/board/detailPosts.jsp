@@ -20,14 +20,14 @@
 <tr><th width="20%">제목</th><td width="80%"><c:out value="${board.bdTitle}" /></td></tr>
 <tr><td></td></tr>
 <tr><th colspan="2">질문 내용</th></tr>
-<tr><td colspan="2"><textarea cols="120" rows="10" disabled="disabled"><c:out value="${board.bdQuestion}" /></textarea></td></tr>
+<tr><td colspan="2"><textarea cols="98" rows="10" disabled="disabled"><c:out value="${board.bdQuestion}" /></textarea></td></tr>
 <c:if test="${board.bdYn == 'N' }">
 	<tr><th colspan="2">답변 내용</th></tr>
-	<tr><td colspan="2"><textarea id="answer" name="answer" cols="120" rows="10"></textarea></td></tr>
+	<tr><td colspan="2"><textarea id="answer" name="answer" cols="98" rows="10"></textarea></td></tr>
 </c:if>
 <c:if test="${board.bdYn == 'Y' }">
 	<tr><th colspan="2">답변 내용</th></tr>
-	<tr><td colspan="2"><textarea cols="120" rows="10" disabled="disabled"><c:out value="${board.bdAnswer}" /></textarea></td></tr>
+	<tr><td colspan="2"><textarea cols="98" rows="10" disabled="disabled"><c:out value="${board.bdAnswer}" /></textarea></td></tr>
 </c:if>
 </table>
 

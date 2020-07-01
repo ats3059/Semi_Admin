@@ -27,10 +27,10 @@ private FranDao franDao = new FranDaoImpl();
 	@Override
 	public Map<Fran, Menu> FranMemberSelect(HttpServletRequest req) {
 		//모달내에 해당하는 정보를 넘겨주는 service (해당 fran넘버의 값으로 넘겨줌)
-		Fran fran = new Fran();
-		fran.setFranNo(Integer.parseInt(req.getParameter("franno")));
+		Menu menu = new Menu();
+		menu.setMenuNo(Integer.parseInt(req.getParameter("menuno")));
 		
-		return franDao.SelectFranMember(fran);
+		return franDao.SelectFranMember(menu);
 	}
 
 	@Override

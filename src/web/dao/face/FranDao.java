@@ -12,7 +12,7 @@ import web.util.Paging;
 public interface FranDao {
 	//메뉴조회 + 메뉴 자세히보기 ajax를 위한 기능들
 	public Map<Fran,Menu> SelectFranMenu();
-	public Map<Fran,Menu> SelectFranMember(Fran fran);
+	public Map<Fran,Menu> SelectFranMember(Menu menu);
 	public List<Image> SelectImage(Menu menu);
 	public void MenuUpdate(Menu menu);
 	//-------------------------------------------

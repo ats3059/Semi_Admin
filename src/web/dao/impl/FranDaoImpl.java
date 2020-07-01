@@ -26,8 +26,9 @@ public class FranDaoImpl implements FranDao{
 		
 		conn = JDBCTemplate.getConnection();
 		
-		String sql = "select f.fran_no,f.fran_name,m.menu_name,m.menu_no from fran f , menu m where m.fran_no = f.fran_no\r\n" + 
-				"and menu_stat = 'N'";
+		String sql = "select f.fran_no,f.fran_name,m.menu_name,m.menu_no\r\n" + 
+				"from fran f , menu m\r\n" + 
+				"where m.fran_no = f.fran_no and menu_stat = 'N' order by menu_no desc";
 		Map<Fran,Menu> map = new LinkedHashMap<Fran, Menu>();
 		
 		try {
@@ -61,7 +62,7 @@ public class FranDaoImpl implements FranDao{
 		
 	
 	@Override
-	public Map<Fran, Menu> SelectFranMember(Fran fran) {
+	public Map<Fran, Menu> SelectFranMember(Menu mn) {
 
 		conn = JDBCTemplate.getConnection();
 		
@@ -73,14 +74,14 @@ public class FranDaoImpl implements FranDao{
 				" from fran f , menu m" + 
 				" where m.fran_no = f.fran_no" + 
 				"    and menu_stat = 'N'" + 
-				"    and f.fran_no = ?";
+				"    and m.menu_no = ?";
 		
 		
 		Map<Fran,Menu> map = new LinkedHashMap<Fran, Menu>();
 		
 		try {
 			ps = conn.prepareStatement(sql);
-			ps.setInt(1, fran.getFranNo());
+			ps.setInt(1, mn.getMenuNo());
 			rs = ps.executeQuery();
 			while(rs.next()) {	
 				Fran fra = new Fran();
@@ -176,7 +177,7 @@ public class FranDaoImpl implements FranDao{
 conn = JDBCTemplate.getConnection();
 		
 		String sql = "select f.fran_no,f.fran_name,m.menu_name,m.menu_no from fran f, menu m, blind b";
-			sql +=	" 	where f.fran_no = m.fran_no and m.menu_no = b.menu_no and b.blind_yn = 'N'";
+			sql +=	" 	where f.fran_no = m.fran_no and m.menu_no = b.menu_no and b.blind_yn = 'N' order by b.blind_no desc";
 		Map<Fran,Menu> map = new LinkedHashMap<Fran, Menu>();
 		
 		try {
