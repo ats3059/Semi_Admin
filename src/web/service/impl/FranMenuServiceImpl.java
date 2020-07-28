@@ -49,7 +49,6 @@ private FranDao franDao = new FranDaoImpl();
 		
 		Menu menu = new Menu();
 		menu.setMenuNo(Integer.parseInt((String) req.getAttribute("menuno")));
-		System.out.println("여기는 업데이트 서비스 " + menu.getMenuNo());
 		franDao.MenuUpdate(menu);
 		
 	}
@@ -101,7 +100,6 @@ private FranDao franDao = new FranDaoImpl();
 		if( param!=null && !"".equals(param) ) {
 			curPage = Integer.parseInt(param);
 		}
-		System.out.println(curPage);
 		//검색어
 		String search = (String)req.getParameter("search");
 		//Board 테이블의 총 게시글 수를 조회한다
@@ -111,7 +109,6 @@ private FranDao franDao = new FranDaoImpl();
 		Paging paging = new Paging(totalCount, curPage);
 		paging.setSearch(search);
 		
-		System.out.println(paging);
 		//Paging 객체 반환
 		return paging;
 	}

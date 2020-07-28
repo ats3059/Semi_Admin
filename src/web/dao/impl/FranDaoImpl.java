@@ -55,7 +55,6 @@ public class FranDaoImpl implements FranDao{
 			JDBCTemplate.close(ps);
 			
 		}
-		System.out.println("기준이되는 DAO에서 보내는 메세지 입니다 : "+map);
 		return map;
 		}
 		
@@ -138,7 +137,6 @@ public class FranDaoImpl implements FranDao{
 			JDBCTemplate.close(ps);
 		}
 		
-		System.out.println("여기는 Dao" + list);
 		return list;
 	}
 
@@ -149,7 +147,6 @@ public class FranDaoImpl implements FranDao{
 		conn = JDBCTemplate.getConnection();
 		
 		String sql = "update menu set menu_stat = 'Y' where menu_no = ? ";
-		System.out.println("여기는 업데이트 DAO : " + menu.getMenuNo());
 	
 		try {
 			
@@ -157,7 +154,6 @@ public class FranDaoImpl implements FranDao{
 			ps.setInt(1 , menu.getMenuNo());	
 			ps.executeUpdate();
 			
-			System.out.println(ps);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}finally {
@@ -204,7 +200,6 @@ conn = JDBCTemplate.getConnection();
 			JDBCTemplate.close(ps);
 			
 		}
-		System.out.println("기준이되는 Blind DAO에서 보내는 메세지 입니다 : "+map);
 		return map;
 	}
 
@@ -281,7 +276,6 @@ conn = JDBCTemplate.getConnection();
 			JDBCTemplate.close(ps);
 		}
 		
-		System.out.println("여기는 블라인드 DAO : " + list);
 		return list;
 	}
 
@@ -292,7 +286,6 @@ conn = JDBCTemplate.getConnection();
 		conn = JDBCTemplate.getConnection();
 		
 		String sql = "update menu set menu_blind = 'Y' where menu_no = ? ";
-		System.out.println("여기는 업데이트 DAO : " + menu.getMenuNo());
 	
 		try {
 			
@@ -300,7 +293,6 @@ conn = JDBCTemplate.getConnection();
 			ps.setInt(1 , menu.getMenuNo());	
 			ps.executeUpdate();
 			
-			System.out.println(ps);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}finally {
@@ -320,7 +312,6 @@ public void BlindUpdateB(Blind blind) {
 	conn = JDBCTemplate.getConnection();
 	
 	String sql = "update blind set blind_yn = 'Y' where menu_no = ? ";
-	System.out.println("여기는 블라인드 업데이트  매개변수는 blind DAO : " + blind.getMenuNo());
 	
 	try {
 		
@@ -328,7 +319,6 @@ public void BlindUpdateB(Blind blind) {
 		ps.setInt(1 , blind.getMenuNo());	
 		ps.executeUpdate();
 		
-		System.out.println(ps);
 	} catch (SQLException e) {
 		e.printStackTrace();
 	}finally {
@@ -363,7 +353,6 @@ public void BlindUpdateB(Blind blind) {
 			//조회결과 처리
 			while( rs.next() ) {
 				cnt = rs.getInt(1);
-				System.out.println("이거되냐");
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -372,7 +361,6 @@ public void BlindUpdateB(Blind blind) {
 			JDBCTemplate.close(rs);
 			JDBCTemplate.close(ps);
 		}
-		System.out.println("개수"+cnt);
 		return cnt;
 	}
 	@Override
@@ -403,11 +391,8 @@ public void BlindUpdateB(Blind blind) {
 			
 			rs = ps.executeQuery(); //SQL 수행 및 결과집합 저장
 			
-//			System.out.println(rs.next());
 			//조회 결과 처리
 			while(rs.next()) {
-//				System.out.println(rs.getInt("bd_no"));
-				System.out.println("몇번");
 				Fran fran = new Fran();
 				//결과값 한 행 처리
 				fran.setFranNo(rs.getInt("fran_no"));
@@ -416,7 +401,6 @@ public void BlindUpdateB(Blind blind) {
 				//리스트에 결과값 저장
 				franList.put(fran,rs.getString("food_name"));
 			}
-			System.out.println("뭐야");
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -426,7 +410,6 @@ public void BlindUpdateB(Blind blind) {
 			JDBCTemplate.close(ps);
 		}
 		//최종 결과 반환
-		System.out.println("이래야지"+franList);
 		return franList;
 	}
 

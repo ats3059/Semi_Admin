@@ -20,7 +20,6 @@ public class ModalUpdateController extends HttpServlet {
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		System.out.println("분리 test"+req.getParameter("menuno"));
 		req.setAttribute("menuno", req.getParameter("menuno"));
 
 		franmenuService.FranMenuUpdate(req);

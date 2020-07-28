@@ -15,13 +15,10 @@ $(document).ready(function() {
 				}
 				, dataType: "html"
 				, success: function(result) {
-					console.log("AJAX 성공")
-					console.log(result)
 					
 					$("#myModal1 .modal-body").html(result)
 				}
 				, error: function() {
-					console.log("AJAX 실패")
 					
 				}
 			});

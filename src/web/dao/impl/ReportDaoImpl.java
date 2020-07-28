@@ -41,7 +41,6 @@ public class ReportDaoImpl implements ReportDao {
 			//조회결과 처리
 			while( rs.next() ) {
 				cnt = rs.getInt(1);
-				System.out.println("이거되냐");
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -50,7 +49,6 @@ public class ReportDaoImpl implements ReportDao {
 			JDBCTemplate.close(rs);
 			JDBCTemplate.close(ps);
 		}
-		System.out.println("개수"+cnt);
 		return cnt;
 	}
 
@@ -76,10 +74,6 @@ public class ReportDaoImpl implements ReportDao {
 
 				
 				
-				System.out.println(sql);
-				System.out.println(paging.getStartNo());
-				System.out.println(paging.getEndNo());
-				System.out.println(paging.getSearch());
 				
 				//결과 저장할 List
 				Map<User, Report> reportList = new LinkedHashMap<>();
@@ -93,10 +87,8 @@ public class ReportDaoImpl implements ReportDao {
 					
 					rs = ps.executeQuery(); //SQL 수행 및 결과집합 저장
 					
-//					System.out.println(rs.next());
 					//조회 결과 처리
 					while(rs.next()) {
-//						System.out.println(rs.getInt("bd_no"));
 						Report report = new Report(); //결과값 저장 객체
 						User user = new User();
 						
@@ -116,9 +108,7 @@ public class ReportDaoImpl implements ReportDao {
 						
 						//리스트에 결과값 저장
 						reportList.put(user, report);
-						System.out.println(report);
 					}
-					System.out.println("뭐야");
 					
 				} catch (SQLException e) {
 					e.printStackTrace();
@@ -157,7 +147,6 @@ public class ReportDaoImpl implements ReportDao {
 
 			//조회 결과 처리
 			while(rs.next()) {
-//				System.out.println(rs.getInt("bd_no"));
 				Report report = new Report(); //결과값 저장 객체
 				User user = new User();
 				
@@ -177,9 +166,7 @@ public class ReportDaoImpl implements ReportDao {
 				
 				//리스트에 결과값 저장
 				reportList.put(user, report);
-				System.out.println(report);
 			}
-			System.out.println("뭐야");
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -189,7 +176,6 @@ public class ReportDaoImpl implements ReportDao {
 			JDBCTemplate.close(ps);
 		}
 		//최종 결과 반환
-		System.out.println("이거는되냐"+reportList);
 		return reportList;
 	}
 
@@ -217,7 +203,6 @@ public class ReportDaoImpl implements ReportDao {
 
 					//조회 결과 처리
 					while(rs.next()) {
-//						System.out.println(rs.getInt("bd_no"));
 						User user = new User(); //결과값 저장 객체
 						
 						//결과값 한 행 처리
@@ -225,9 +210,7 @@ public class ReportDaoImpl implements ReportDao {
 						
 						//리스트에 결과값 저장
 						reportList.add(user);
-						System.out.println(reportList);
 					}
-					System.out.println("뭐야");
 					
 				} catch (SQLException e) {
 					e.printStackTrace();

@@ -54,19 +54,15 @@ public class BoardServiceImpl implements BoardService {
 			curPage = Integer.parseInt(param);
 		}
 		
-		System.out.println("현재페이지"+curPage);
 		//검색어
 		String search = (String)req.getParameter("search");
-		System.out.println("검색"+search);
 		//Board 테이블의 총 게시글 수를 조회한다
 		int totalCount = boardDao.selectCntPosts(search);
-		System.out.println("총페이지"+totalCount);
 
 		//Paging 객체 생성 - 현재 페이지(curPage), 총 게시글 수(totalCount) 활용
 		Paging paging = new Paging(totalCount, curPage);
 		paging.setSearch(search);
 		
-		System.out.println("페이징"+paging);
 		
 		//Paging 객체 반환
 		return paging;
@@ -89,7 +85,6 @@ public class BoardServiceImpl implements BoardService {
 		//Paging 객체 생성 - 현재 페이지(curPage), 총 게시글 수(totalCount) 활용
 		Paging paging = new Paging(totalCount, curPage);
 		paging.setSearch(search);
-		System.out.println("페이징2"+paging);
 		
 		//Paging 객체 반환
 		return paging;
@@ -105,10 +100,6 @@ public class BoardServiceImpl implements BoardService {
 		return boardDao.selectNotice(paging);
 	}
 
-//	@Override //
-//	public Map<String, Object> getList(Paging paging) {
-//		return boardDao.selectAll(paging);
-//	}
 	
 	@Override //
 	public void addPosts(HttpServletRequest req) {
@@ -143,9 +134,7 @@ public class BoardServiceImpl implements BoardService {
 			bdNo = Integer.parseInt(param);
 		}
 		
-		System.out.println("넘버넘어오냐고"+bdNo);
 		board.setBdNo(bdNo);
-//		board.setBdNo((int)req.getParameter("bdno"));
 		board.setBdTitle((String)req.getParameter("title"));
 		board.setBdQuestion((String)req.getParameter("content"));
 	
@@ -179,8 +168,6 @@ public class BoardServiceImpl implements BoardService {
 		if( param!=null && !"".equals(param) ) {
 			bdNo = Integer.parseInt(param);
 		}
-		System.out.println("왜 두번"+req.getParameter("answer"));
-		System.out.println("넘버넘어오냐고"+bdNo);
 		board.setBdNo(bdNo);
 		board.setBdAnswer((String)req.getParameter("answer"));
 	

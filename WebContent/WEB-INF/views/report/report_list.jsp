@@ -11,15 +11,11 @@
 		<th style="width: 10%;">신고자</th>
 		<th style="width: 20%;">신고이유</th>
 		<th style="width: 10%;">대상자</th>
-<!-- 		<th style="width: 20%;">상세내용</th> -->
-<!-- 		<th style="width: 20%;">신고일자</th> -->
 		<th style="width: 20%;">조치내용</th>
 		<th style="width: 10%;">조치여부</th>
 		<th style="width: 10%;">비고</th>
-<!-- 		<th style="width: 20%;">대상한줄평</th> -->
 	</tr>
 
-<%-- 	<c:out ${reportList.value.rptNo }/> --%>
 
 		<c:forEach var="item" items="${reportkey}" varStatus="status">
 			<tr>

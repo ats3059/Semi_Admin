@@ -26,7 +26,6 @@ var val=[];
 <%  } %> 
 
 	window.onload = function(){
-		console.log(key[0])
 		 new Morris.Line({
 	            element: 'morrisChart',
 	              data: [

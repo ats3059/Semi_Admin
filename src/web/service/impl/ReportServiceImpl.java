@@ -25,7 +25,6 @@ public class ReportServiceImpl implements ReportService {
 		if( param!=null && !"".equals(param) ) {
 			curPage = Integer.parseInt(param);
 		}
-		System.out.println(curPage);
 		//검색어
 		String search = (String)req.getParameter("search");
 		//Board 테이블의 총 게시글 수를 조회한다
@@ -35,7 +34,6 @@ public class ReportServiceImpl implements ReportService {
 		Paging paging = new Paging(totalCount, curPage);
 		paging.setSearch(search);
 		
-		System.out.println(paging);
 		//Paging 객체 반환
 		return paging;
 	}
@@ -48,9 +46,6 @@ public class ReportServiceImpl implements ReportService {
 	@Override
 	public void reportMeasure(HttpServletRequest req) {
 
-		System.out.println("넘어오나"+req.getParameter("rptNo"));
-		System.out.println("넘어오나"+req.getParameter("rptManage"));
-		System.out.println("넘어오나"+req.getParameter("rptNote"));
 		
 		String param = req.getParameter("rptNo");
 		int rptNo = 0;
@@ -82,7 +77,6 @@ public class ReportServiceImpl implements ReportService {
 		if( param!=null && !"".equals(param) ) {
 			rptNo = Integer.parseInt(param);
 		}
-		System.out.println("이결과는 "+reportDao.selectMeasure(rptNo));
 		return reportDao.selectMeasure(rptNo);
 	}
 

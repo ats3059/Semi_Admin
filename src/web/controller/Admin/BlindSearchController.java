@@ -31,7 +31,6 @@ public class BlindSearchController extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("메뉴 넘버  : " + request.getParameter("menuno"));
 		Map<Menu,Blind> map = franmenuService.BlindInfoSelect(request);
 		
 		List<Menu>menukey = new ArrayList<>();
@@ -53,8 +52,6 @@ public class BlindSearchController extends HttpServlet {
 		request.setAttribute("bimglist", list);	
 		// 파일경로 보내주기
 		
-		System.out.println(map);
-		System.out.println(list);
 		
 		request.setAttribute("menuno", request.getParameter("menuno"));
 		

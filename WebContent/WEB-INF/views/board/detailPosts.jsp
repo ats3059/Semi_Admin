@@ -1,17 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
-<!-- <link rel="stylesheet" type="text/css"  href="/resources/css/board/board.css" >    -->
-<%-- <c:import url="/WEB-INF/views/layout//header.jsp"></c:import> --%>
 
 <c:import url="/WEB-INF/views/web_layout/header2.jsp" />
 <c:import url="/WEB-INF/views/web_layout/body_nav.jsp" />
 <section class="wrapper">
 <div class="board">
 
-<!-- <div class="board_top"> -->
-<!-- <h1 style="padding-bottom: 20px;">상세보기</h1> -->
-<!-- </div> -->
 <form action="/m/posts/update" method="post">
 <table class="table table-bordered" style="text-align: center">
 

@@ -21,7 +21,6 @@ public class ModalUpdateBlindController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
-		System.out.println("분리 test"+request.getParameter("menuno"));
 		request.setAttribute("menuno", request.getParameter("menuno"));
 		
 		franService.BlindMenuUpdate(request);

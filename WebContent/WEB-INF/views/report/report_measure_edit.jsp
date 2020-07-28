@@ -55,9 +55,6 @@
 </c:forEach>
 </table>
 	<input type="submit" style="margin-left: 1000px;" class="btn btn-primary btn-lg" value="처리" />
-<%-- 	<c:if test="${reportvalue[status.index].rptYn == 'Y' }"> --%>
-<!-- 		<button type="button" class="btn btn-primary btn-lg" onclick="/measure/update">수정</button> -->
-<%-- 	</c:if> --%>
 	<button type="button" class="btn btn-primary btn-lg" onclick="javascript:history.go(-1)">취소</button>
 </form>
 </div>

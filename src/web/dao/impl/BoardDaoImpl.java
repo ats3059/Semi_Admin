@@ -143,9 +143,6 @@ public class BoardDaoImpl implements BoardDao {
 		
 
 		
-		System.out.println(paging.getStartNo());
-		System.out.println(paging.getEndNo());
-		System.out.println(paging.getSearch());
 		
 		//결과 저장할 List
 		Map<Board, String > boardList = new LinkedHashMap<>();
@@ -159,10 +156,8 @@ public class BoardDaoImpl implements BoardDao {
 			
 			rs = ps.executeQuery(); //SQL 수행 및 결과집합 저장
 			
-//			System.out.println(rs.next());
 			//조회 결과 처리
 			while(rs.next()) {
-//				System.out.println(rs.getInt("bd_no"));
 				Board b = new Board(); //결과값 저장 객체
 				String user= null;
 				
@@ -178,12 +173,9 @@ public class BoardDaoImpl implements BoardDao {
 				
 				
 				user = rs.getString("users_id");
-				System.out.println("유저"+user);
 				//리스트에 결과값 저장
 				boardList.put(b, user);
-				System.out.println(b);
 			}
-			System.out.println("뭐야");
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -193,7 +185,6 @@ public class BoardDaoImpl implements BoardDao {
 			JDBCTemplate.close(ps);
 		}
 		
-		System.out.println("객체"+boardList);
 		//최종 결과 반환
 		return boardList;
 	}
@@ -218,9 +209,6 @@ public class BoardDaoImpl implements BoardDao {
 				sql += " ) BOARD";
 				sql += " WHERE rnum BETWEEN ? AND ?";
 				
-				System.out.println(paging.getStartNo());
-				System.out.println(paging.getEndNo());
-				System.out.println(paging.getSearch());
 				
 				//결과 저장할 List
 				List<Board> boardList = new ArrayList<>();
@@ -234,10 +222,7 @@ public class BoardDaoImpl implements BoardDao {
 					
 					rs = ps.executeQuery(); //SQL 수행 및 결과집합 저장
 					
-//					System.out.println(rs.next());
-					//조회 결과 처리
 					while(rs.next()) {
-						System.out.println(rs.getInt("bd_no"));
 						Board b = new Board(); //결과값 저장 객체
 						
 						//결과값 한 행 처리
@@ -252,9 +237,7 @@ public class BoardDaoImpl implements BoardDao {
 						
 						//리스트에 결과값 저장
 						boardList.add(b);
-						System.out.println(b);
 					}
-					System.out.println("뭐냐");
 					
 				} catch (SQLException e) {
 					e.printStackTrace();
@@ -273,7 +256,6 @@ public class BoardDaoImpl implements BoardDao {
 	public void insertBoard(Board board) {
 		conn = JDBCTemplate.getConnection(); //DB연결
 		
-		System.out.println(board.getUserNo());
 		
 		//SQL 작성
 		String sql = "";
@@ -281,8 +263,6 @@ public class BoardDaoImpl implements BoardDao {
 		
 		java.util.Date utilDate = new java.util.Date();
 		java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
-		System.out.println("utilDate:" + utilDate);
-		System.out.println("sqlDate:" + sqlDate);
 		
 		try {
 			ps = conn.prepareStatement(sql); //SQL수행 객체
@@ -317,7 +297,6 @@ public class BoardDaoImpl implements BoardDao {
 			ps.setString(1, user.getUserId());
 			
 			rs = ps.executeQuery();
-			System.out.println(rs);
 			
 			while( rs.next() ) {
 				user.setUserNo( rs.getInt("users_no"));
@@ -400,7 +379,6 @@ public class BoardDaoImpl implements BoardDao {
 		
 		// DB 연결
 		conn = JDBCTemplate.getConnection();
-		System.out.println("userno : " + userno);
 		User user = new User();
 		
 		// DB sql 작성
@@ -425,7 +403,6 @@ public class BoardDaoImpl implements BoardDao {
 			JDBCTemplate.close(rs);
 			JDBCTemplate.close(ps);
 		}
-		System.out.println(user);
 		return user;
 	}
 	
@@ -434,7 +411,6 @@ public class BoardDaoImpl implements BoardDao {
 		//DB연결 객체
 		conn = JDBCTemplate.getConnection();
 		
-		System.out.println("여긴오냐" + board.getBdNo());
 		
 		//SQL 작성
 		String sql = "";
@@ -448,7 +424,6 @@ public class BoardDaoImpl implements BoardDao {
 			ps.setString(2, board.getBdQuestion());
 			ps.setInt(3, board.getBdNo());
 			
-			System.out.println("결과"+ps.executeUpdate());
 			
 			
 		} catch (SQLException e) {
@@ -465,7 +440,6 @@ public class BoardDaoImpl implements BoardDao {
 		//DB연결 객체
 				conn = JDBCTemplate.getConnection();
 				
-				System.out.println("여긴오냐" + board.getBdNo());
 				
 				//SQL 작성
 				String sql = "";
@@ -478,7 +452,6 @@ public class BoardDaoImpl implements BoardDao {
 					ps.setString(1,board.getBdAnswer());
 					ps.setInt(2, board.getBdNo());
 					
-					System.out.println("결과"+ps.executeUpdate());
 					
 					
 				} catch (SQLException e) {

@@ -22,9 +22,7 @@ public class BoardAddNoticeController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		System.out.println("/add/notice [GET]");
 		
-//		req.setAttribute("user", boardService.getUserIdNick(req));
 	
 		req.getRequestDispatcher("/WEB-INF/views/board/addNotice.jsp")
 			.forward(req, resp);
@@ -33,11 +31,9 @@ public class BoardAddNoticeController extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 	
-		System.out.println("/add/posts [POST]");
 		
 		req.setCharacterEncoding("UTF-8");
 		
-//		boardService.addPosts(req);
 		boardService.addNotice(req);
 		
 		resp.sendRedirect("/m/view/notice");

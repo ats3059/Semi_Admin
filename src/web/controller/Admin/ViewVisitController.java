@@ -25,7 +25,6 @@ public class ViewVisitController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
 		Map<Date,Integer> map = userinfo.SelectUserDate();
-		 System.out.println(map);
 		
 		 
 		 

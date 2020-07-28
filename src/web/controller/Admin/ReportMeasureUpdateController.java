@@ -25,19 +25,15 @@ public class ReportMeasureUpdateController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-		System.out.println("/measure/update 요청");
 		
 		Map<User, Report> reportList = reportService.getReport(req);
 		
-		System.out.println("왜안나와"+reportList);
 		List<User> userKey = new ArrayList<>();
 		List<Report> reportVal = new ArrayList<>();
 		for(User key:reportList.keySet()) {
 			userKey.add(key);
 			reportVal.add(reportList.get(key));
 		}
-		System.out.println("이거냐"+userKey);
-		System.out.println("저거냐"+reportVal);
 		
 		req.setAttribute("reportkey", userKey);
 		req.setAttribute("reportvalue", reportVal);

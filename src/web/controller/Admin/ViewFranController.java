@@ -30,23 +30,9 @@ public class ViewFranController extends HttpServlet {
 		Map<Fran, String> franView = franMenuService.viewFran(paging);
 		 
 		
-//		System.out.println(franView.keySet());
-//			List<String> userKey = new ArrayList<>();
-//			List<Fran> reportVal = new ArrayList<>();
-//			for(String key:franView.keySet()) {
-//				userKey.add(key);
-//				reportVal.add(franView.get(key));
-//			}
-//		
 		//페이징계산결과 MODEL값 전달
 		req.setAttribute("paging", paging);
 	
-		//게시글 조회 MODEL값 전달
-//		req.setAttribute("reportkey", userKey);
-//		req.setAttribute("reportvalue", reportVal);
-//		
-//		System.out.println(userKey);
-//		System.out.println(reportVal);
 
 		req.setAttribute("franList", franView);
 		req.getRequestDispatcher("/WEB-INF/views/fran/fran_list.jsp")

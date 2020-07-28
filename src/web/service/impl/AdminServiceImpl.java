@@ -15,7 +15,6 @@ private AdminDao adminDao = new AdminDaoImpl();
 		
 		int aut = adminDao.selectCntMemberByAdminIdAdminPw(admin);
 		
-		System.out.println(aut);
 		//로그인 성공
 		if( aut == 1) {
 			loginaut = true;
@@ -24,7 +23,6 @@ private AdminDao adminDao = new AdminDaoImpl();
 			loginaut = false;	
 		}
 		
-		System.out.println("login : "+loginaut);
 		return loginaut;
 	}
 

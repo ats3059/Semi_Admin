@@ -27,8 +27,6 @@ public class Web_franManagementSearchController extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("프렌차이즈 넘버 :  " + request.getParameter("franno"));
-		System.out.println("메뉴 넘버  : " + request.getParameter("menuno"));
 		
 		request.setAttribute("menuno", request.getParameter("menuno"));
 		
@@ -54,8 +52,6 @@ public class Web_franManagementSearchController extends HttpServlet {
 		request.setAttribute("imglist", list);	
 		// 파일경로 보내주기
 		
-		System.out.println(map);
-		System.out.println(list);
 		
 		
 		

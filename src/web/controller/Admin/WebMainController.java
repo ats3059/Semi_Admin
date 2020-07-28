@@ -39,22 +39,17 @@ public class WebMainController extends HttpServlet {
 		
 		//로그인 확인
 		
-		System.out.println("controller " + adminService.login(admin));
 		
 		
 		
 		HttpSession session = request.getSession(); //세션 객체 생성
-//		로그인 인증(Authentication, auth)
 		
 		
 		
 					boolean log = adminService.login(admin);
 		
 					
-					System.out.println("controller"+log);
 					
-					System.out.println("admin " + admin.getAdminId());
-					System.out.println("admin " + admin.getAdminName());
 					
 				if( log == true ) {
 					//로그인 성공

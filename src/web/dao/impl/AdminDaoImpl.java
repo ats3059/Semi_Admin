@@ -25,8 +25,6 @@ public class AdminDaoImpl implements AdminDao{
 		
 		// 결과 저장할 변수
 		int count = 0;
-		System.out.println("DAO1 :  " + admin.getAdminId());
-		System.out.println("DAO2 : " + admin.getAdminPw());
 		
 		try {
 			ps = conn.prepareStatement(sql);
@@ -40,7 +38,6 @@ public class AdminDaoImpl implements AdminDao{
 			while (rs.next()) {
 				count = rs.getInt(1);
 			}
-			System.out.println("dao rs" + count);
 
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -57,7 +54,6 @@ public class AdminDaoImpl implements AdminDao{
 		
 		}
 
-		System.out.println("dao count : " + count);
 		return count;
 	}
 

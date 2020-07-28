@@ -34,7 +34,6 @@ public class ViewReportListController extends HttpServlet {
 		Map<User, Report> reportList = reportService.getListReport(paging);
 		 
 		
-		System.out.println(reportList.keySet());
 			List<User> userKey = new ArrayList<>();
 			List<Report> reportVal = new ArrayList<>();
 			for(User key:reportList.keySet()) {

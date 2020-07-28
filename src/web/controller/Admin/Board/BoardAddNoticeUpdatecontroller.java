@@ -20,9 +20,7 @@ public class BoardAddNoticeUpdatecontroller extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-		System.out.println("/add/notice/update [GET]");
 		
-		System.out.println("이게 진짜니"+req.getParameter("bdNo"));
 		String param = req.getParameter("bdNo");
 		int bdNo = 0;
 		if( param!=null && !"".equals(param) ) {
@@ -39,11 +37,9 @@ public class BoardAddNoticeUpdatecontroller extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		System.out.println("/add/notice/update [POST]");
 		
 		req.setCharacterEncoding("UTF-8");
 		
-//		boardService.addPosts(req);
 		boardService.updateNotice(req);
 		
 		resp.sendRedirect("/m/view/notice");

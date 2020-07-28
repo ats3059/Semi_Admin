@@ -20,24 +20,19 @@ public class BoardPostsUpdateController extends HttpServlet {
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		System.out.println("/add/posts/update [GET]");
 		
-		System.out.println("이게 진짜니"+req.getParameter("bdNo"));
 		String param = req.getParameter("bdNo");
 		int bdNo = 0;
 		if( param!=null && !"".equals(param) ) {
 			bdNo = Integer.parseInt(param);
 		}
 		
-//		req.setAttribute("bdno",bdNo);
 		
 		Board board = new Board();
 		board = boardService.viewPostsDetail(bdNo);
 		
-		System.out.println("board" + board);
 		req.setAttribute("board", board);
 		
-		System.out.println("board,userno : " + board.getUserNo());
 		int userno = board.getUserNo();
 		
 		req.setAttribute("user", boardService.postsDetailUser(userno));
@@ -49,11 +44,9 @@ public class BoardPostsUpdateController extends HttpServlet {
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		System.out.println("/posts/update [POST]");
 		
 		req.setCharacterEncoding("UTF-8");
 		
-//		boardService.addPosts(req);
 		boardService.updatePostsAnswer(req);
 		
 		resp.sendRedirect("/m/view/posts");

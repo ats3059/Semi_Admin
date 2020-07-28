@@ -27,7 +27,6 @@ public class BoardViewNoticeDetailController extends HttpServlet {
 			boardNo = Integer.parseInt(param);
 		}
 		
-//		boardService.viewCnt(boardNo);
 		req.setAttribute("board", boardService.viewPostsDetail(boardNo));
 		req.getRequestDispatcher("/WEB-INF/views/board/detailNotice.jsp")
 		.forward(req, resp);
